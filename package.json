@@ -1,7 +1,6 @@
 {
-  "name": "ChampionshipManager",
-  "version": "1.0.0",
-  "description": "",
+  "name": "championshipmanager",
+  "version": "1.0.1",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -19,5 +18,7 @@
     "sqlite": "^4.2.1",
     "sqlite3": "^5.1.6"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {},
+  "description": ""
 }
