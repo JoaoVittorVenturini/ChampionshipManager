@@ -1,7 +1,7 @@
 import { openDb } from "../config/connection";
 import time from "../models/time.js"
 
-class TimeController{
+class TeamController{
     createTeam(){
         openDb().then(db => {
             db.exec('CREATE TABLE IF NOT EXISTS Time (id INTEGER PRIMARY KEY, nome TEXT, integrantes INTEGER, camp_jogados INTEGER, camp_vencidos INTEGER)');
@@ -65,4 +65,4 @@ class TimeController{
      }
 }
 
-export default new TimeController();
+export default new TeamController();
