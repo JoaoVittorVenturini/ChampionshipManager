@@ -1,6 +1,7 @@
 import { Router } from "express";
-import TeamController from "./app/controllers/teamController.js";
+import TeamController from "./controllers/teamController.js";
 import playerController from "./controllers/playerController.js";
+import matchController from "./controllers/matchController.js";
 
 const router = Router();
 
@@ -16,10 +17,10 @@ router.post('/players/create', playerController.insertPlayer);
 router.put('/players/update', playerController.updatePlayer);
 router.delete('/players/delete', playerController.deletePlayer);
 
-router.get('/matches/all', partidaController.selectMatches);
-router.get('/matches/match', partidaController.selectMatch);
-router.post('/matches/create', partidaController.insertMatch);
-router.put('/matches/update', partidaController.updateMatch);
-router.delete('/matches/delete', partidaController.deleteMatch);
+router.get('/matches/all', matchController.selectMatches);
+router.get('/matches/match', matchController.selectMatch);
+router.post('/matches/create', matchController.insertMatch);
+router.put('/matches/update', matchController.updateMatch);
+router.delete('/matches/delete', matchController.deleteMatch);
 
 export default router;
