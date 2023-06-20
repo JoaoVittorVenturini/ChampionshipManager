@@ -25,7 +25,7 @@ window.addEventListener('load', () => {
                 let actions = newRow.insertCell();
 
                 let editButton = document.createElement('a');
-                editButton.href = `editPlayer.html?nome=${encodeURIComponent(data[i].nome)}&funcao=${encodeURIComponent(data[i].funcao)}&personagem=${encodeURIComponent(data[i].personagem)}&time=${encodeURIComponent(data[i].time)}`;                
+                editButton.href = `editPlayer.html?id=${encodeURIComponent(data[i].id)}&nome=${encodeURIComponent(data[i].nome)}&funcao=${encodeURIComponent(data[i].funcao)}&personagem=${encodeURIComponent(data[i].personagem)}`;                
 
                 let editImage = document.createElement('img');
                 editImage.src = 'img/editButton.svg';
@@ -76,9 +76,3 @@ window.addEventListener('load', () => {
         });           
     };
 });
-
-editar = (dados) => {
-    const { nome, funcao, personagem, time } = dados;
-    const url = `editPlayer.html?nome=${encodeURIComponent(nome)}&funcao=${encodeURIComponent(funcao)}&personagem=${encodeURIComponent(personagem)}&time=${encodeURIComponent(time)}`;
-    window.location.href = url;
-};

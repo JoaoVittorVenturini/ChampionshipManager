@@ -47,9 +47,9 @@ class TimeController{
      }
     
     selectTeam(req, res){
-        time.id = req.body.id;
+        const id = req.params.id;
         return openDb().then(db => {
-             return db.get('SELECT * FROM Time WHERE id=?', [time.id])
+             return db.get('SELECT * FROM Time WHERE id=?', [id])
              .then(time => res.json(time));
          });
      }

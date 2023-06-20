@@ -24,13 +24,22 @@ class PlayerController{
     }
     
     updatePlayer(req, res) {
-        const { id, nome, funcao, personagem, time_id } = req.body;
+        const id = req.params.id;
+        const { nome, funcao, personagem, time_id } = req.body;
         openDb().then(db => {
             db.run('UPDATE Jogador SET nome=?, funcao=?, personagem=?, time_id=? WHERE id=?', [nome, funcao, personagem, time_id, id], (error) => {
-                res.json({
-                    statusCode: 200,
-                    message: 'Jogador atualizado com sucesso.'
-                });
+                if (error) {
+                    console.error('Erro ao atualizar jogador:', error);
+                    res.status(500).json({
+                        statusCode: 500,
+                        message: 'Ocorreu um erro ao atualizar o jogador.'
+                    });
+                } else {
+                    res.json({
+                        statusCode: 200,
+                        message: 'Jogador atualizado com sucesso.'
+                    });
+                }
             });
         }).catch(error => {
             console.error('Erro ao abrir o banco de dados:', error);
