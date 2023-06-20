@@ -21,13 +21,12 @@ window.addEventListener('load', () => {
                 let newRow = tbody.insertRow();
                 newRow.insertCell().textContent = data[i].id;
                 newRow.insertCell().textContent = data[i].nome;
-                newRow.insertCell().textContent = data[i].integrantes;
                 newRow.insertCell().textContent = data[i].camp_jogados;
                 newRow.insertCell().textContent = data[i].camp_vencidos;
                 let actions = newRow.insertCell();
 
                 let editButton = document.createElement('a');
-                editButton.href = 'editTeam.html';
+                editButton.href = editButton.href = `editTeam.html?id=${encodeURIComponent(data[i].id)}&nome=${encodeURIComponent(data[i].nome)}&camp_jogados=${encodeURIComponent(data[i].camp_jogados)}&camp_vencidos=${encodeURIComponent(data[i].camp_vencidos)}`;;
 
                 let editImage = document.createElement('img');
                 editImage.src = 'img/editButton.svg';

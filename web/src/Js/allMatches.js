@@ -76,9 +76,3 @@ window.addEventListener('load', () => {
         });           
     };
 });
-
-editar = (dados) => {
-    const { rounds, time_um, time_dois, vencedor } = dados;
-    const url = `editMatch.html?rounds=${encodeURIComponent(rounds)}&time_um=${encodeURIComponent(time_um)}&time_dois=${encodeURIComponent(time_dois)}&vencedor=${encodeURIComponent(vencedor)}`;
-    window.location.href = url;
-};

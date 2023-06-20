@@ -11,9 +11,13 @@
 <body>
     <form class="row g-3" id="create_match">
         <h1>Criar partida</h1>
-        <div class="col-md-12">
+        <div class="col-md-6">
           <label class="form-label">Rounds</label>
-          <input type="number" class="form-control" id="round" placeholder="Número de rounds">
+          <input type="number" class="form-control" id="rounds" placeholder="Número de rounds">
+        </div>
+        <div class="col-6">
+          <label class="form-label">Id vencedor</label>
+          <input type="number" class="form-control" id="vencedor" placeholder="Nome do time vencedor">
         </div>
         <div class="col-md-6">
           <label class="form-label">Id time um</label>
@@ -24,8 +28,8 @@
           <input type="number" class="form-control" id="time_dois" placeholder="Nome do segundo time">
         </div>
         <div class="col-12">
-          <button type="submit" class="btn btn-primary">Id Vencedor</button>
-          <button type="button" class="btn btn-secondary"><a href="./allMatches.html" class="link-light link-offset-2 link-underline-opacity-2 link-underline-opacity-0">Lista dos Rounds</a></button>
+          <button type="submit" class="btn btn-primary">Cadastrar</button>
+          <button type="button" class="btn btn-secondary"><a href="./allMatches.html" class="link-light link-offset-2 link-underline-opacity-2 link-underline-opacity-0">Lista das Partidas</a></button>
         </div>
       </form>
 

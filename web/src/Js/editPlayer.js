@@ -17,6 +17,7 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 function editar() {
+    alert('Jogador editado com sucesso.');
     const params = new URLSearchParams(window.location.search);
     const jogadorId = params.get('id');
     const nome = document.getElementById('nome').value;
@@ -38,9 +39,6 @@ function editar() {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(jogadorData)
-    })
-    .then((response) => {
-        alert('Dados atualizados com Sucesso');
     })
     .catch((error) => {
         console.error('Erro de conexão com a API:', error);

@@ -8,8 +8,8 @@ const router = Router();
 router.get('/teams/all', TeamController.selectTeams);
 router.get('/teams/team', TeamController.selectTeam);
 router.post('/teams/create', TeamController.insertTeam);
-router.put('/teams/update', TeamController.updateTeam);
-router.delete('/teams/delete', TeamController.deleteTeam);
+router.put('/teams/update/:id', TeamController.updateTeam);
+router.delete('/teams/delete/:id', TeamController.deleteTeam);
 
 router.get('/players/all', PlayerController.selectPlayers);
 router.get('/players/player', PlayerController.selectPlayer);
@@ -20,7 +20,7 @@ router.delete('/players/delete/:id', PlayerController.deletePlayer);
 router.get('/matches/all', matchController.selectMatches);
 router.get('/matches/match', matchController.selectMatch);
 router.post('/matches/create', matchController.insertMatch);
-router.put('/matches/update', matchController.updateMatch);
-router.delete('/matches/delete', matchController.deleteMatch);
+router.put('/matches/update/:id', matchController.updateMatch);
+router.delete('/matches/delete/:id', matchController.deleteMatch);
 
 export default router;

@@ -9,6 +9,13 @@ app.use(express.json());
 app.use(cors());
 app.use(router);
 
+import xx from "./controllers/teamController.js";
+xx.createTeam();
+import yy from "./controllers/playerController.js";
+yy.createPlayer();
+import zz from "./controllers/matchController.js";
+zz.createMatch();
+
 app.listen(7070, () => console.log(`Server running on port 7070`));    
 
 https.createServer({
