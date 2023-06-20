@@ -42,7 +42,7 @@ class PlayerController{
     selectPlayers(req, res){
        return openDb().then(db => {
             return db.all('SELECT Jogador.id, Jogador.nome, Jogador.funcao, Jogador.personagem, Time.nome AS time FROM Jogador JOIN Time ON Jogador.time_id = Time.id')
-            .then(jogadores => res.json(jogadores));
+            .then(jogadores => res.json(jogadores));    
         });
     }
     
@@ -54,18 +54,34 @@ class PlayerController{
          });
      }
     
-    deletePlayer(req, res){
-        Jogador.id = req.body.id;
-        openDb().then(db => {
-            db.get('DELETE FROM Jogador WHERE id=?', [Jogador.id])
-            .then(res => res);
-         });
-    
-         res.json({
-            "statusCode": 200,
-            "message": "Success"
-        });
-     }
+     deletePlayer(req, res) {
+        const id = req.params.id;
+      
+        openDb()
+          .then(db => {
+            db.get('DELETE FROM Jogador WHERE id = ?', [id])
+              .then(() => {
+                res.json({
+                  statusCode: 200,
+                  message: 'Success'
+                });
+              })
+              .catch(error => {
+                res.status(500).json({
+                  statusCode: 500,
+                  message: 'Error deleting player',
+                  error: error.message
+                });
+              });
+          })
+          .catch(error => {
+            res.status(500).json({
+              statusCode: 500,
+              message: 'Error connecting to the database',
+              error: error.message
+            });
+          });
+      }          
 }
 
 export default new PlayerController();

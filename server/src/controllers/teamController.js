@@ -18,7 +18,8 @@ class TeamController{
         });
     
         res.json({
-            "statusCode": 200
+            "statusCode": 200,
+            "message": "Success"
         });
     }
     
@@ -33,7 +34,8 @@ class TeamController{
         });
     
         res.json({
-            "statusCode": 200
+            "statusCode": 200,
+            "message": "Success"
         });
     }
     
@@ -60,7 +62,8 @@ class TeamController{
          });
     
          res.json({
-            "statusCode": 200
+            "statusCode": 200,
+            "message": "Success"
         });
      }
 }
