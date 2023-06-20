@@ -1,4 +1,4 @@
-class Time{
+class Team{
   constructor(id, nome, integrantes, camp_jogados, camp_vencidos){
       this.id = id;
       this.nome = nome;
@@ -8,4 +8,4 @@ class Time{
   }
 }
 
-export default new Time();
+export default new Team();
