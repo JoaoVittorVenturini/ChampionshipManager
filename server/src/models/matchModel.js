@@ -1,4 +1,4 @@
-class Game{
+class Match{
     constructor(id, rounds, vencedor, time_um, time_dois){
         this.id = id;
         this.rounds = rounds;
@@ -8,4 +8,4 @@ class Game{
     }
 }
 
-export default new Game();
+export default new Match();

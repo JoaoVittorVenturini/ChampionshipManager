@@ -16,4 +16,10 @@ router.post('/players/create', playerController.insertPlayer);
 router.put('/players/update', playerController.updatePlayer);
 router.delete('/players/delete', playerController.deletePlayer);
 
+router.get('/matches/all', partidaController.selectMatches);
+router.get('/matches/match', partidaController.selectMatch);
+router.post('/matches/create', partidaController.insertMatch);
+router.put('/matches/update', partidaController.updateMatch);
+router.delete('/matches/delete', partidaController.deleteMatch);
+
 export default router;
