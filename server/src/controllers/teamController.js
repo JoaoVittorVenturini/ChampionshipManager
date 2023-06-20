@@ -1,5 +1,5 @@
-import { openDb } from "../config/connection";
-import time from "../models/time.js"
+import { openDb } from "../config/connection.js";
+import Time from "../models/teamModel.js";
 
 class TeamController{
     createTeam(){
@@ -9,12 +9,12 @@ class TeamController{
     }
     
     insertTeam(req, res){
-        time.nome = req.body.nome;
-        time.integrantes = req.body.integrantes;
-        time.camp_jogados = req.body.camp_jogados;
-        time.camp_vencidos = req.body.camp_vencidos;
+        Time.nome = req.body.nome;
+        Time.integrantes = req.body.integrantes;
+        Time.camp_jogados = req.body.camp_jogados;
+        Time.camp_vencidos = req.body.camp_vencidos;
         openDb().then(db => {
-            db.run('INSERT INTO Time (nome, integrantes, camp_jogados, camp_vencidos) VALUES (?, ?, ?, ?)', [time.nome, time.integrantes, time.camp_jogados, time.camp_vencidos]);
+            db.run('INSERT INTO Time (nome, integrantes, camp_jogados, camp_vencidos) VALUES (?, ?, ?, ?)', [Time.nome, Time.integrantes, Time.camp_jogados, Time.camp_vencidos]);
         });
     
         res.json({
@@ -23,13 +23,13 @@ class TeamController{
     }
     
     updateTeam(req, res){
-        time.nome = req.body.nome;
-        time.integrantes = req.body.integrantes;
-        time.camp_jogados = req.body.camp_jogados;
-        time.camp_vencidos = req.body.camp_vencidos;
-        time.id = req.body.id;
+        Time.nome = req.body.nome;
+        Time.integrantes = req.body.integrantes;
+        Time.camp_jogados = req.body.camp_jogados;
+        Time.camp_vencidos = req.body.camp_vencidos;
+        Time.id = req.body.id;
         openDb().then(db => {
-            db.run('UPDATE Time SET nome=?, integrantes=?, camp_jogados=?,camp_vencidos=? WHERE id=?', [time.nome, time.integrantes, time.camp_jogados, time.camp_vencidos, time.id]);  
+            db.run('UPDATE Time SET nome=?, integrantes=?, camp_jogados=?,camp_vencidos=? WHERE id=?', [Time.nome, Time.integrantes, Time.camp_jogados, Time.camp_vencidos, Time.id]);  
         });
     
         res.json({
@@ -45,17 +45,17 @@ class TeamController{
      }
     
     selectTeam(req, res){
-        time.id = req.body.id;
+        Time.id = req.body.id;
         return openDb().then(db => {
-             return db.get('SELECT * FROM Time WHERE id=?', [time.id])
+             return db.get('SELECT * FROM Time WHERE id=?', [Time.id])
              .then(time => res.json(time));
          });
      }
     
     deleteTeam(req, res){
-        time.id = req.body.id;
+        Time.id = req.body.id;
         openDb().then(db => {
-            db.get('DELETE FROM Time WHERE id=?', [time.id])
+            db.get('DELETE FROM Time WHERE id=?', [Time.id])
             .then(res => res);
          });
     
