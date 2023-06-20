@@ -23,10 +23,4 @@ router.post('/matches/create', matchController.insertMatch);
 router.put('/matches/update', matchController.updateMatch);
 router.delete('/matches/delete', matchController.deleteMatch);
 
-router.get('/matches/all', matchController.selectMatches);
-router.get('/matches/match', matchController.selectMatch);
-router.post('/matches/create', matchController.insertMatch);
-router.put('/matches/update', matchController.updateMatch);
-router.delete('/matches/delete', matchController.deleteMatch);
-
 export default router;
