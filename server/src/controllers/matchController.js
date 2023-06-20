@@ -1,5 +1,5 @@
-import { openDb } from "../config/connection";
-import match from "../models/match.js";
+import { openDb } from "../config/connection.js";
+import match from "../models/matchModel.js";
 
 class matchController{
       createMatch(){

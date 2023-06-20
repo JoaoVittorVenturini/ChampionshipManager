@@ -1,5 +1,5 @@
-import { openDb } from "../config/connection";
-import Team from "../models/teamModel"
+import { openDb } from "../config/connection.js";
+import Team from "../models/teamModel.js"
 
 class TeamController{
     createTeam(){
