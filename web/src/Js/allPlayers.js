@@ -1,5 +1,3 @@
-let data; 
-
 window.addEventListener('load', () => {
     const tabela = document.getElementById('table');
     const tbody = tabela.querySelector('tbody');
@@ -27,7 +25,7 @@ window.addEventListener('load', () => {
                 let actions = newRow.insertCell();
 
                 let editButton = document.createElement('a');
-                editButton.href = 'editPlayer.html';
+                editButton.href = `editPlayer.html?nome=${encodeURIComponent(data[i].nome)}&funcao=${encodeURIComponent(data[i].funcao)}&personagem=${encodeURIComponent(data[i].personagem)}&time=${encodeURIComponent(data[i].time)}`;                
 
                 let editImage = document.createElement('img');
                 editImage.src = 'img/editButton.svg';
@@ -50,33 +48,37 @@ window.addEventListener('load', () => {
 
     deletar = (id) => {
         fetch(`http://localhost:7070/players/delete/${id}`, {
-          method: 'DELETE'
+            method: 'DELETE'
         })
-          .then((response) => {
-            confirm('Tem certeza que deseja excluir o Jogador?');
-
+        .then((response) => {
             if (response.ok) {
-              for (let i = 0; i < data.length; i++) {
-                if (data[i].id === id) {
-                  data.splice(i, 1);
-                  break;
+                for (let i = 0; i < data.length; i++) {
+                    if (data[i].id === id) {
+                        data.splice(i, 1);
+                        break;
+                    }
                 }
-              }
-      
-              const rows = tbody.getElementsByTagName('tr');
-              for (let i = 0; i < rows.length; i++) {
-                const rowId = parseInt(rows[i].cells[0].textContent);
-                if (rowId === id) {
-                  tbody.deleteRow(i);
-                  break;
+
+                const rows = tbody.getElementsByTagName('tr');
+                for (let i = 0; i < rows.length; i++) {
+                    const rowId = parseInt(rows[i].cells[0].textContent);
+                    if (rowId === id) {
+                        tbody.deleteRow(i);
+                        break;
+                    }
                 }
-              }
             } else {
-              throw new Error('Ocorreu um erro ao deletar o item.');
+                throw new Error('Ocorreu um erro ao deletar o item.');
             }
-          })
-          .catch((error) => {
+        })
+        .catch((error) => {
             console.error('Erro de conexão com a API:', error);
-          });           
-      };      
+        });           
+    };
 });
+
+editar = (dados) => {
+    const { nome, funcao, personagem, time } = dados;
+    const url = `editPlayer.html?nome=${encodeURIComponent(nome)}&funcao=${encodeURIComponent(funcao)}&personagem=${encodeURIComponent(personagem)}&time=${encodeURIComponent(time)}`;
+    window.location.href = url;
+};

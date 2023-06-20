@@ -14,7 +14,7 @@ router.delete('/teams/delete', TeamController.deleteTeam);
 router.get('/players/all', PlayerController.selectPlayers);
 router.get('/players/player', PlayerController.selectPlayer);
 router.post('/players/create', PlayerController.insertPlayer);
-router.put('/players/update', PlayerController.updatePlayer);
+router.put('/players/update/:id', PlayerController.updatePlayer);
 router.delete('/players/delete/:id', PlayerController.deletePlayer);
 
 router.get('/matches/all', matchController.selectMatches);

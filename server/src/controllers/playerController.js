@@ -23,21 +23,23 @@ class PlayerController{
         });
     }
     
-    updatePlayer(req, res){
-        Jogador.nome = req.body.nome;
-        Jogador.funcao = req.body.funcao;
-        Jogador.personagem = req.body.personagem;
-        Jogador.time_id = req.body.time_id; 
-        Jogador.id = req.body.id;
+    updatePlayer(req, res) {
+        const { id, nome, funcao, personagem, time_id } = req.body;
         openDb().then(db => {
-            db.run('UPDATE Jogador SET nome=?, funcao=?, personagem=?, time_id=? WHERE id=?', [Jogador.nome, Jogador.funcao, Jogador.personagem, Jogador.time_id, Jogador.id]); 
+            db.run('UPDATE Jogador SET nome=?, funcao=?, personagem=?, time_id=? WHERE id=?', [nome, funcao, personagem, time_id, id], (error) => {
+                res.json({
+                    statusCode: 200,
+                    message: 'Jogador atualizado com sucesso.'
+                });
+            });
+        }).catch(error => {
+            console.error('Erro ao abrir o banco de dados:', error);
+            res.status(500).json({
+                statusCode: 500,
+                message: 'Ocorreu um erro ao atualizar o jogador.'
+            });
         });
-    
-        res.json({
-            "statusCode": 200,
-            "message": "Success"
-        });
-    }
+    }    
     
     selectPlayers(req, res){
        return openDb().then(db => {
