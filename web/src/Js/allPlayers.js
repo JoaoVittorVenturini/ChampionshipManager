@@ -2,7 +2,11 @@ window.addEventListener('load', () => {
     const tabela = document.getElementById('table');
     const tbody = tabela.querySelector('tbody');
 
-    fetch('http://localhost:7070/players/all')
+    const deletar = () => {
+        alert('deletar');   
+    }
+
+    fetch('http://localhost:7070/players/all')  
         .then((response) => {
             if (response.ok) {
                 return response.json();

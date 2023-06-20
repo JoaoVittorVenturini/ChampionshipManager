@@ -1,4 +1,5 @@
 import { openDb } from "../config/connection.js";
+import { openDb } from "../config/connection";
 import Jogador from "../models/playerModel.js";
 
 class PlayerController{
